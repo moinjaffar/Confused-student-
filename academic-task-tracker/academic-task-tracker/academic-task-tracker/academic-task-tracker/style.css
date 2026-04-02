@@ -1,0 +1,248 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/academic-task-tracker/style.css b/academic-task-tracker/style.css
+new file mode 100644
+index 0000000000000000000000000000000000000000..99920173cd28609b6cd03738868a197c11c525bc
+--- /dev/null
++++ b/academic-task-tracker/style.css
+@@ -0,0 +1,238 @@
++:root {
++  --bg: #f7f8fc;
++  --card: #ffffff;
++  --text: #1e2430;
++  --muted: #5f6b7a;
++  --accent: #2463eb;
++  --success: #0f9d58;
++  --border: #dce3ef;
++}
++
++body.dark-mode {
++  --bg: #0f1420;
++  --card: #1a2333;
++  --text: #e6edf7;
++  --muted: #a5b3c7;
++  --accent: #5a8dff;
++  --success: #4dd184;
++  --border: #31405a;
++}
++
++* {
++  box-sizing: border-box;
++}
++
++body {
++  margin: 0;
++  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
++  background: var(--bg);
++  color: var(--text);
++}
++
++.container {
++  width: min(980px, 92vw);
++  margin: 2rem auto;
++  display: grid;
++  gap: 1rem;
++}
++
++header h1 {
++  margin-bottom: 0.2rem;
++}
++
++header p {
++  margin-top: 0;
++  color: var(--muted);
++}
++
++.card {
++  background: var(--card);
++  border: 1px solid var(--border);
++  border-radius: 10px;
++  padding: 1rem;
++}
++
++.grid {
++  display: grid;
++  gap: 0.8rem;
++  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
++}
++
++label {
++  display: grid;
++  gap: 0.35rem;
++  font-size: 0.92rem;
++  color: var(--muted);
++}
++
++input,
++select,
++textarea,
++button {
++  font: inherit;
++}
++
++input,
++select,
++textarea {
++  border: 1px solid var(--border);
++  border-radius: 8px;
++  padding: 0.55rem 0.7rem;
++  background: #fff;
++}
++
++button {
++  margin-top: 0.9rem;
++  border: none;
++  border-radius: 8px;
++  padding: 0.65rem 0.9rem;
++  background: var(--accent);
++  color: #fff;
++  font-weight: 600;
++  cursor: pointer;
++}
++
++.theme-toggle {
++  margin-top: 0.6rem;
++  width: fit-content;
++}
++
++.backup-help {
++  margin-top: 0;
++  color: var(--muted);
++}
++
++.backup-actions {
++  display: flex;
++  flex-wrap: wrap;
++  gap: 0.7rem;
++}
++
++.backup-actions button {
++  margin-top: 0;
++}
++
++.task-list {
++  list-style: none;
++  margin: 0;
++  padding: 0;
++  display: grid;
++  gap: 0.65rem;
++}
++
++.task-item {
++  border: 1px solid var(--border);
++  border-radius: 8px;
++  padding: 0.75rem;
++  display: flex;
++  justify-content: space-between;
++  gap: 0.8rem;
++  align-items: start;
++}
++
++.task-item h3 {
++  margin: 0 0 0.2rem;
++  font-size: 1rem;
++}
++
++.meta {
++  color: var(--muted);
++  font-size: 0.86rem;
++}
++
++.badge {
++  display: inline-block;
++  padding: 0.2rem 0.5rem;
++  border-radius: 999px;
++  font-size: 0.76rem;
++  font-weight: 600;
++}
++
++.badge.done {
++  background: #ddf5e8;
++  color: var(--success);
++}
++
++.badge.pending {
++  background: #eff2f8;
++  color: #5a6472;
++}
++
++.task-actions button {
++  margin: 0;
++  padding: 0.35rem 0.65rem;
++  font-size: 0.8rem;
++}
++
++.hidden {
++  display: none;
++}
++
++.empty {
++  color: var(--muted);
++}
++
++.stats {
++  display: flex;
++  gap: 1rem;
++  flex-wrap: wrap;
++}
++
++.dashboard-help {
++  margin-top: 0;
++  color: var(--muted);
++}
++
++.stat {
++  border: 1px solid var(--border);
++  border-radius: 8px;
++  padding: 0.6rem 0.75rem;
++  min-width: 130px;
++}
++
++.stat strong {
++  display: block;
++  font-size: 1.2rem;
++}
++
++.weak-subjects-stat {
++  flex: 1 1 260px;
++}
++
++.weak-subjects-stat strong {
++  font-size: 0.95rem;
++  line-height: 1.4;
++}
++
++.credit-card {
++  background: #fff4bf;
++  border: 1px solid #f1d972;
++  border-radius: 10px;
++  padding: 0.6rem 0.8rem;
++  text-align: center;
++}
++
++.credit-card small {
++  color: #6b5200;
++  font-weight: 600;
++}
++
++.credit-card a {
++  color: #8a2b06;
++  text-decoration: none;
++  border-bottom: 1px dashed #8a2b06;
++}
++
++.credit-card a:hover {
++  color: #5f1d04;
++}
++
++body.dark-mode .credit-card {
++  background: #453700;
++  border-color: #b9991f;
++}
++
++body.dark-mode .credit-card small,
++body.dark-mode .credit-card a {
++  color: #ffdc66;
++}
+ 
+EOF
+)
