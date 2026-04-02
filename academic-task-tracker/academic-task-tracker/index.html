@@ -1,0 +1,142 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/academic-task-tracker/index.html b/academic-task-tracker/index.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..0032b7d230958c542339776d5fbb2e15e0d607d8
+--- /dev/null
++++ b/academic-task-tracker/index.html
+@@ -0,0 +1,132 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8" />
++  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++  <title>Academic Task Tracker</title>
++  <link rel="stylesheet" href="style.css" />
++</head>
++<body>
++  <main class="container">
++    <header>
++      <h1>Academic Task Tracker</h1>
++      <p>Track lectures, topics, and study tasks by day, week, and semester.</p>
++      <button id="themeToggle" type="button" class="theme-toggle">🌙 Dark Mode</button>
++    </header>
++
++    <section class="card form-card">
++      <h2>Add Task</h2>
++      <form id="taskForm">
++        <div class="grid">
++          <label>
++            Subject
++            <input id="subject" type="text" placeholder="e.g., Mathematics" required />
++          </label>
++
++          <label>
++            Task title
++            <input id="title" type="text" placeholder="e.g., Linear Algebra Assignment" required />
++          </label>
++
++          <label>
++            Category
++            <select id="category" required>
++              <option value="Academic Task">Academic Task</option>
++              <option value="Lecture">Lecture</option>
++              <option value="Topic Learned">Topic Learned</option>
++            </select>
++          </label>
++
++          <label>
++            Date
++            <input id="date" type="date" required />
++          </label>
++
++          <label>
++            Status
++            <select id="status">
++              <option value="false">Not Completed</option>
++              <option value="true">Completed</option>
++            </select>
++          </label>
++
++          <label>
++            Study time (minutes)
++            <input id="durationMinutes" type="number" min="0" step="5" value="25" required />
++          </label>
++        </div>
++
++        <label>
++          Notes (optional)
++          <textarea id="notes" rows="2" placeholder="Short note about what you covered"></textarea>
++        </label>
++
++        <button type="submit">Save Task</button>
++      </form>
++    </section>
++
++    <section class="card">
++      <h2>Filters</h2>
++      <div class="grid">
++        <label>
++          View
++          <select id="viewMode">
++            <option value="all">All Tasks</option>
++            <option value="week">Week-wise</option>
++            <option value="semester">Semester-wise</option>
++          </select>
++        </label>
++
++        <label>
++          Week (when week-wise)
++          <input id="weekPicker" type="week" />
++        </label>
++
++        <label>
++          Semester (when semester-wise)
++          <select id="semesterPicker"></select>
++        </label>
++      </div>
++    </section>
++
++    <section class="card stats" id="stats"></section>
++
++    <section class="card dashboard-engine">
++      <h2>Dashboard Engine</h2>
++      <p class="dashboard-help">UserStats = { totalStudyTime, streakDays, completionRate, weakSubjects[] }</p>
++      <div id="dashboardStats" class="stats"></div>
++    </section>
++
++    <section class="card">
++      <h2>Backup</h2>
++      <p class="backup-help">Export your tasks to JSON and import them later on any device.</p>
++      <div class="backup-actions">
++        <button id="exportBackupBtn" type="button">Export Backup</button>
++        <button id="importBackupBtn" type="button">Import Backup</button>
++        <input id="importFileInput" type="file" accept="application/json" class="hidden" />
++      </div>
++    </section>
++
++    <section class="card">
++      <h2>Tasks</h2>
++      <ul id="taskList" class="task-list"></ul>
++      <p id="emptyState" class="empty hidden">No tasks found for this filter.</p>
++    </section>
++
++    <section class="credit-card">
++      <small>
++        Coded by
++        <a
++          href="https://www.instagram.com/moin.jaffar?igsh=bGluMDEwOXRjY25m"
++          target="_blank"
++          rel="noopener noreferrer"
++        >
++          moinjaffar
++        </a>
++      </small>
++    </section>
++  </main>
++
++  <script src="script.js"></script>
++</body>
++</html>
+ 
+EOF
+)
