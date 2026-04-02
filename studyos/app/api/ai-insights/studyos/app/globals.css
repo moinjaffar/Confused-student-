@@ -1,0 +1,18 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/studyos/app/globals.css b/studyos/app/globals.css
+new file mode 100644
+index 0000000000000000000000000000000000000000..dce4df6da1aef34e00422088941c6a270361139e
+--- /dev/null
++++ b/studyos/app/globals.css
+@@ -0,0 +1,8 @@
++@tailwind base;
++@tailwind components;
++@tailwind utilities;
++
++body {
++  margin: 0;
++  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
++}
+ 
+EOF
+)
